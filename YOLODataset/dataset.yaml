@@ -1,0 +1,6 @@
+path: ./YOLODataset #Ruta a carpeta YOLODataset
+train: images/train
+val: images/val
+nc: 1  # Número de clases
+names: ['miotubo']
+obb: true  # Habilitar soporte para bounding boxes orientados
