@@ -27,15 +27,19 @@ This repository contains the scripts necessary to train and use a detection mode
 
 ### 2. Model Training
 
-1. Ensure YOLOv11 is installed locally.  
+1. Install YOLOv11 by running the following command inside the `YOLODataset` folder:  
+   pip install ultralytics
+
+2. Ensure YOLOv11 is installed locally.  
    You can follow the instructions from the official YOLOv11 repository to set it up.  
 
-2. Place the generated `images` and `labels` folders in the required YOLO structure (inside the `datasets` directory).  
+3. Place the generated `images` and `labels` folders in the required YOLO structure (inside the `datasets` directory).  
 
-3. Configure the training file with the class names and corresponding paths.  
+4. Configure the training file with the class names and corresponding paths.  
 
-4. Execute the training using the following command in an Anaconda-configured environment:  
+5. Execute the training using the following command in an Anaconda-configured environment:  
    python train.py --epochs <number_of_epochs> --data <path_to_your_data.yaml> --weights yolov11.pt  
+
 
 ### 3. Detecting New Images
 
