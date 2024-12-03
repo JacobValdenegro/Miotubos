@@ -48,3 +48,6 @@ This repository contains the scripts necessary to train and use a detection mode
    python detect.py --weights best.pt --source <folder_or_image>  
 
 2. Detection results will be automatically saved in the `runs/detect/` folder.
+
+# Myotube Detection and Segmentation Model Report and LateX.zip
+You can see 2 files besides the YOLODataset folder, the Myotubes_report.pdf is the lateX report in pdf and in the .zip file you have all the files needed to run the report in Overleaf.
