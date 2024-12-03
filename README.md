@@ -1,47 +1,46 @@
 # Myotube Detection and Segmentation Model
 
-Este repositorio contiene los scripts necesarios para entrenar y usar un modelo de detección basado en YOLOv11, diseñado para detectar y contar myotubos en imágenes microscópicas.
+This repository contains the scripts necessary to train and use a detection model based on YOLOv11, designed to detect and count myotubes in microscopic images.
 
-## Instrucciones
+## Instructions
 
-1. Organiza tus datos:  
-   Coloca las imágenes originales etiquetadas y sus archivos JSON correspondientes en la carpeta `Labelme`.
+1. Organize your data:  
+   Place the labeled original images and their corresponding JSON files in the `Labelme` folder.
 
-2. Genera imágenes espejadas horizontalmente:  
-   Ejecuta el script `mirrorH.py` para generar versiones espejadas horizontalmente de las imágenes y los archivos JSON:  
+2. Generate horizontally mirrored images:  
+   Run the `mirrorH.py` script to generate horizontally mirrored versions of the images and JSON files:  
    python mirrorH.py  
-   Esto creará una carpeta llamada `mirrorH` con las imágenes y JSON modificados.
+   This will create a folder named `mirrorH` with the modified images and JSON files.
 
-3. Genera imágenes espejadas verticalmente:  
-   Ejecuta el script `mirrorV.py` para generar versiones espejadas verticalmente de las imágenes y los archivos JSON:  
+3. Generate vertically mirrored images:  
+   Run the `mirrorV.py` script to generate vertically mirrored versions of the images and JSON files:  
    python mirrorV.py  
-   Esto creará una carpeta llamada `mirrorV` con las imágenes y JSON modificados.
+   This will create a folder named `mirrorV` with the modified images and JSON files.
 
-4. Une todos los archivos en una carpeta:  
-   Usa el script `merge_files.py` para combinar los archivos originales, horizontales y verticales en una carpeta llamada `images-json`:  
+4. Merge all files into one folder:  
+   Use the `merge_files.py` script to combine the original, horizontal, and vertical files into a folder named `images-json`:  
    python merge_files.py  
 
-5. Convierte los JSON al formato YOLO OBB:  
-   Ejecuta el script `json_to_yolo_obb.py` para generar las carpetas `images` y `labels` necesarias para el entrenamiento del modelo YOLO:  
+5. Convert JSON to YOLO OBB format:  
+   Run the `json_to_yolo_obb.py` script to generate the `images` and `labels` folders required for YOLO model training:  
    python json_to_yolo_obb.py  
 
-### 2. Entrenamiento del modelo
+### 2. Model Training
 
-1. Asegúrate de tener YOLOv11 instalado localmente.  
-   Puedes seguir las instrucciones del repositorio oficial de YOLOv11 para configurarlo.  
+1. Ensure YOLOv11 is installed locally.  
+   You can follow the instructions from the official YOLOv11 repository to set it up.  
 
-2. Coloca las carpetas `images` y `labels` generadas en la estructura requerida por YOLO (dentro del directorio `datasets`).  
+2. Place the generated `images` and `labels` folders in the required YOLO structure (inside the `datasets` directory).  
 
-3. Configura el archivo de entrenamiento con los nombres de las clases y rutas correspondientes.  
+3. Configure the training file with the class names and corresponding paths.  
 
-4. Ejecuta el entrenamiento usando el siguiente comando en un entorno configurado con Anaconda:  
-   python train.py --epochs <número_de_épocas> --data <ruta_a_tu_archivo_data.yaml> --weights yolov11.pt  
+4. Execute the training using the following command in an Anaconda-configured environment:  
+   python train.py --epochs <number_of_epochs> --data <path_to_your_data.yaml> --weights yolov11.pt  
 
-### 3. Detección de imágenes nuevas
+### 3. Detecting New Images
 
-1. Usa el archivo `best.pt` generado tras el entrenamiento para realizar detecciones en imágenes nuevas.  
-   Ejecuta el siguiente comando:  
-   python detect.py --weights best.pt --source <carpeta_o_imagen>  
+1. Use the `best.pt` file generated after training to perform detections on new images.  
+   Run the following command:  
+   python detect.py --weights best.pt --source <folder_or_image>  
 
-2. Los resultados de las detecciones se guardarán automáticamente en la carpeta `runs/detect/`.
-
+2. Detection results will be automatically saved in the `runs/detect/` folder.
